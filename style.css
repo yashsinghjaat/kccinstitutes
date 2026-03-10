@@ -38,7 +38,7 @@ nav ul li a.active, nav ul li a:hover {
     border-bottom: 2px solid #fff;
 }
 .hero {
-    background: url('https://kccitm.edu.in/images/kcc-campus.jpg') center/cover no-repeat;
+    background: url('https://www.pgdm.college/wp-content/uploads/2016/02/KCC-Institute-of-Management-Greater-Noida-Campus.jpg.webp') center/cover no-repeat;
     min-height: 480px;
     display: flex;
     align-items: center;
@@ -280,3 +280,4 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
+
