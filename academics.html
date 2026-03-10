@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCC Institutes - Academics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="KCC Institutes Logo" style="height:70px;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="alumni.html">Alumni</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academics.html" class="active" target="_blank">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="infrastructure.html">Infrastructure</a></li>
+                <li><a href="placements.html">Placements</a></li>
+                <li><a href="life.html">Life@KCC</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-content">
+        <h1>Academics</h1>
+        <img src="https://img.freepik.com/free-photo/college-students-studying-library_23-2149216012.jpg?w=900" alt="Academics" style="width:100%;max-width:700px;border-radius:10px;margin-bottom:20px;">
+        <img src="https://img.freepik.com/free-photo/teacher-explaining-lesson-group-students_23-2149216014.jpg?w=900" alt="Faculty" style="width:100%;max-width:700px;border-radius:10px;margin-bottom:20px;">
+        <p>KCC Institutes offers a diverse range of academic programs designed to meet the needs of today's dynamic industries. Our curriculum is regularly updated to incorporate the latest advancements and industry requirements.</p>
+        <ul>
+            <li>B.Tech (AKTU & IPU)</li>
+            <li>BBA (IPU)</li>
+            <li>BCA (IPU)</li>
+            <li>B.Com (Hons.) (IPU)</li>
+            <li>BAJMC (IPU)</li>
+            <li>MBA (AKTU)</li>
+            <li>BA LLB (H) (IPU)</li>
+            <li>BBA LLB (H) (IPU)</li>
+        </ul>
+        <p>Our faculty members are experienced professionals and researchers dedicated to student success. We emphasize hands-on learning, research, and innovation.</p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;">
+            <div style="flex:1;min-width:250px;">
+                <img src="https://img.freepik.com/free-photo/modern-computer-lab_23-2149204921.jpg?w=400" alt="Computer Lab" style="width:100%;border-radius:10px;">
+                <p style="margin-top:10px;">Modern computer labs and digital resources for all streams.</p>
+            </div>
+            <div style="flex:1;min-width:250px;">
+                <img src="https://img.freepik.com/free-photo/teacher-helping-student_23-2149216015.jpg?w=400" alt="Mentorship" style="width:100%;border-radius:10px;">
+                <p style="margin-top:10px;">Personalized mentorship and guidance for every student.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 KCC Institutes. All rights reserved.</p>
+    </footer>
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget">
+        <button id="chatbot-toggle">💬</button>
+        <div id="chatbot-window" style="display: none;">
+            <div id="chatbot-header">KCC Support AI</div>
+            <div id="chatbot-messages"></div>
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+    <script>
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'block' : 'none';
+        });
+
+        chatbotSend.addEventListener('click', sendMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage('user', message);
+                chatbotInput.value = '';
+                setTimeout(() => respond(message), 1000);
+            }
+        }
+
+        function addMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function respond(message) {
+            const lowerMessage = message.toLowerCase();
+            let response = "I'm sorry, I didn't understand that. Can you rephrase?";
+
+            if (lowerMessage.includes('admission') || lowerMessage.includes('apply')) {
+                response = "For admissions, visit our Admissions page or contact us at info@kccitm.edu.in.";
+            } else if (lowerMessage.includes('course') || lowerMessage.includes('program')) {
+                response = "We offer B.Tech, BBA, BCA, B.Com, BAJMC, MBA, and Law programs. Check our Programs page for details.";
+            } else if (lowerMessage.includes('placement') || lowerMessage.includes('job')) {
+                response = "Our placement record is excellent with 90%+ placements. Visit the Placements page for more info.";
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('phone')) {
+                response = "Contact us at +91-1234567890 or info@kccitm.edu.in.";
+            } else if (lowerMessage.includes('location') || lowerMessage.includes('address')) {
+                response = "We are located at Knowledge Park III, Greater Noida, Uttar Pradesh 201306.";
+            } else if (lowerMessage.includes('fee') || lowerMessage.includes('cost')) {
+                response = "For fee details, please visit our Admissions page or contact the office.";
+            } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                response = "Hello! How can I help you today?";
+            }
+
+            addMessage('bot', response);
+        }
+    </script>
+</body>
+</html>
